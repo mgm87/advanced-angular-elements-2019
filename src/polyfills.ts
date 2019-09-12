@@ -61,3 +61,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// Browsers with partial for Custom Elements
+import '@webcomponents/custom-elements/src/native-shim';
+
+// Browsers without support for Custom Elements
+import '@webcomponents/custom-elements/custom-elements.min';

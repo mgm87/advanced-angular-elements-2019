@@ -1,16 +1,28 @@
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
-import { AppComponent } from './app.component';
+import { SuperCardComponent } from './super-card/super-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    SuperCardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [SuperCardComponent],
+  providers: []
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    const customElement = createCustomElement(SuperCardComponent, { injector });
+    customElements.define('super-card', customElement);
+  }
+
+  ngDoBootstrap() { }
+}

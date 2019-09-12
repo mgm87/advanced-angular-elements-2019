@@ -2,6 +2,7 @@ import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { SuperCardComponent } from './super-card/super-card.component';
@@ -13,6 +14,7 @@ import { SuperCardComponent } from './super-card/super-card.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatButtonModule,
     MatCardModule
   ],
   entryComponents: [SuperCardComponent],

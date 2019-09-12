@@ -1,5 +1,10 @@
+:host {
+  padding: .5em;
+}
+
 .example-card {
   max-width: 400px;
+  min-width: 250px;
 }
 
 .example-header-image {

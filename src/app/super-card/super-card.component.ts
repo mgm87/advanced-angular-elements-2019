@@ -20,6 +20,8 @@ export class SuperCardComponent implements OnInit {
   @Output() like = new EventEmitter<string>();
   @Output() share = new EventEmitter<string>();
 
+  showMoreInfo = false;
+
   private _titleImageSrc: string;
 
   constructor() { }
@@ -33,6 +35,10 @@ export class SuperCardComponent implements OnInit {
 
   shareClicked(title) {
     this.share.emit(title);
+  }
+
+  toggleMoreInfo() {
+    this.showMoreInfo = !this.showMoreInfo;
   }
 
 }

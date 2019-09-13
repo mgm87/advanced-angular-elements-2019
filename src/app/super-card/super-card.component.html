@@ -6,9 +6,15 @@
   </mat-card-header>
   <img mat-card-image src="{{imageSrc}}" alt="Photo of a dog">
   <mat-card-content>
-    <p>
-      <ng-content></ng-content>
-    </p>
+
+    <ng-content></ng-content>
+
+    <button mat-button color="primary" (click)="toggleMoreInfo()">More Info</button>
+
+    <ng-container *ngIf="showMoreInfo">
+      <ng-content select=".more-info"></ng-content>
+    </ng-container>
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="likeClicked(title)">LIKE</button>

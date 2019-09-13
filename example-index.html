@@ -31,5 +31,15 @@
 
     <script type="text/javascript" src="C:/dev/advanced-angular-elements/dist/advanced-angular-elements/polyfills-es5.js"></script>
     <script type="text/javascript" src="C:/dev/advanced-angular-elements/dist/advanced-angular-elements/main-es5.js"></script>
+    <script>
+      document.querySelectorAll('super-card').forEach((element) => {
+        element.addEventListener('like', (e) => {
+          console.log('Like event: ', e.detail);
+        })
+        element.addEventListener('share', (e) => {
+          console.log('Share event: ', e.detail);
+        })
+      });
+    </script>
   </body>
 </html>

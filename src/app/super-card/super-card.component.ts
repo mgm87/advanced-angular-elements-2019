@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-super-card',
@@ -17,11 +17,22 @@ export class SuperCardComponent implements OnInit {
     return this._titleImageSrc;
   }
 
+  @Output() like = new EventEmitter<string>();
+  @Output() share = new EventEmitter<string>();
+
   private _titleImageSrc: string;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  likeClicked(title) {
+    this.like.emit(title);
+  }
+
+  shareClicked(title) {
+    this.share.emit(title);
   }
 
 }

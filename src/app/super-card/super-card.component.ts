@@ -1,4 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
+import { CardStateService } from './card-state.service';
 
 @Component({
   selector: 'app-super-card',
@@ -21,12 +25,18 @@ export class SuperCardComponent implements OnInit {
   @Output() share = new EventEmitter<string>();
 
   showMoreInfo = false;
+  firstBark = false;
+  bark: Observable<boolean>;
 
   private _titleImageSrc: string;
 
-  constructor() { }
+  constructor(private cardState: CardStateService) { }
 
   ngOnInit() {
+    this.bark = this.cardState.shouldBark.pipe(delay(Math.random() * (1500 - 700) + 1000));
+    this.bark.subscribe(() => {
+      this.firstBark = false;
+    })
   }
 
   likeClicked(title) {
@@ -39,6 +49,11 @@ export class SuperCardComponent implements OnInit {
 
   toggleMoreInfo() {
     this.showMoreInfo = !this.showMoreInfo;
+  }
+
+  barkClicked() {
+    this.firstBark = true;
+    this.cardState.bark();
   }
 
 }

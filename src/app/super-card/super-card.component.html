@@ -6,6 +6,9 @@
   </mat-card-header>
   <img mat-card-image src="{{imageSrc}}" alt="Photo of a dog">
   <mat-card-content>
+    <mat-chip-list *ngIf="(bark | async) || firstBark">
+      <mat-chip color="accent" selected>BARK!</mat-chip>
+    </mat-chip-list>
 
     <ng-content></ng-content>
 
@@ -19,5 +22,6 @@
   <mat-card-actions>
     <button mat-button (click)="likeClicked(title)">LIKE</button>
     <button mat-button (click)="shareClicked(title)">SHARE</button>
+    <button mat-button (click)="barkClicked()">BARK!</button>
   </mat-card-actions>
 </mat-card>
